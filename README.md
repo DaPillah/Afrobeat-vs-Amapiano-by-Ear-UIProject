@@ -1,4 +1,4 @@
-# Afrobeat vs Amapiano Prototype
+# Afrobeat-vs-Amapiano-by-Ear-UIProject
 
 This is a lightweight functional prototype for a Python + HTML/CSS/JS team workflow.
 
