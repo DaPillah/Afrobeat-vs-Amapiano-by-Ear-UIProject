@@ -1,0 +1,94 @@
+{
+  "home": {
+    "title": "Afrobeat vs Amapiano",
+    "tagline": "Choose a path, explore the music, and test what you learned.",
+    "team": [
+      {
+        "name": "Justin",
+        "responsibility": "Homepage, app architecture, navigation, and final integration"
+      },
+      {
+        "name": "Lionel",
+        "responsibility": "Learning experience and content flow"
+      },
+      {
+        "name": "Eldad",
+        "responsibility": "Quiz experience and interaction flow"
+      }
+    ],
+    "routes": [
+      {
+        "label": "Start Learning",
+        "href": "/pages/learning.html",
+        "description": "Read through the learning path and content modules."
+      },
+      {
+        "label": "Take Quiz",
+        "href": "/pages/quiz.html",
+        "description": "Answer questions and check your understanding."
+      }
+    ]
+  },
+  "learning": {
+    "title": "Learning Path",
+    "summary": "This section introduces key ideas about Afrobeat and Amapiano.",
+    "modules": [
+      {
+        "title": "Origins",
+        "status": "Ready for Lionel",
+        "description": "Explain where each genre came from and how they evolved."
+      },
+      {
+        "title": "Sound and Style",
+        "status": "Ready for Lionel",
+        "description": "Compare rhythm, instrumentation, and overall feel."
+      },
+      {
+        "title": "Cultural Impact",
+        "status": "Ready for Lionel",
+        "description": "Show how each genre influences artists, dance, and listeners."
+      }
+    ]
+  },
+  "quiz": {
+    "title": "Knowledge Check",
+    "summary": "This section will test whether users can move through the quiz flow successfully.",
+    "questions": [
+      {
+        "prompt": "Which part of the app will guide users through the music concepts before the quiz?",
+        "options": [
+          "Learning path",
+          "Score screen",
+          "Settings page"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "prompt": "Which section is meant to check understanding after reading?",
+        "options": [
+          "Homepage",
+          "Quiz",
+          "Footer"
+        ],
+        "answerIndex": 1
+      }
+    ]
+  },
+  "contracts": {
+    "navigation": [
+      "/pages/index.html",
+      "/pages/learning.html",
+      "/pages/quiz.html"
+    ],
+    "frontendOwners": {
+      "pages/index.html": "Homepage",
+      "pages/learning.html": "Learning flow",
+      "pages/quiz.html": "Quiz flow"
+    },
+    "sharedNotes": [
+      "Keep page-specific logic isolated by file.",
+      "Use the JSON endpoints as the shared source of truth for labels and content.",
+      "Do not break existing route names without team agreement."
+    ]
+  }
+}
