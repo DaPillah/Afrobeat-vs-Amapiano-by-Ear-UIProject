@@ -52,25 +52,111 @@
   },
   "quiz": {
     "title": "Knowledge Check",
-    "summary": "This section will test whether users can move through the quiz flow successfully.",
-    "questions": [
+    "summary": "Test what you picked up about Afrobeat and Amapiano with a guided quiz flow.",
+    "intro": {
+      "eyebrow": "Quiz challenge",
+      "description": "Move through five listening-and-culture prompts, get immediate feedback, and see how well you can separate the two genres.",
+      "primaryActionLabel": "Start quiz",
+      "secondaryActionLabel": "Review learning path",
+      "highlights": [
+        "5 multiple-choice questions",
+        "Instant answer feedback after every choice",
+        "Final score with result tier and answer review"
+      ]
+    },
+    "passingScore": 4,
+    "resultBands": [
       {
-        "prompt": "Which part of the app will guide users through the music concepts before the quiz?",
-        "options": [
-          "Learning path",
-          "Score screen",
-          "Settings page"
-        ],
-        "answerIndex": 0
+        "minScore": 5,
+        "title": "Genre guide",
+        "message": "You can clearly distinguish Afrobeat and Amapiano across sound, origin, and performance feel."
       },
       {
-        "prompt": "Which section is meant to check understanding after reading?",
+        "minScore": 3,
+        "title": "On the right track",
+        "message": "You understand the main differences, but a quick review will help lock in the details."
+      },
+      {
+        "minScore": 0,
+        "title": "Keep exploring",
+        "message": "You have the big picture started. Revisit the learning path and try again with fresh ears."
+      }
+    ],
+    "questions": [
+      {
+        "id": "origins",
+        "prompt": "Which genre started in South Africa and is closely tied to piano-led grooves and log drum bass lines?",
+        "context": "Think about each genre's musical roots.",
         "options": [
-          "Homepage",
-          "Quiz",
-          "Footer"
+          "Afrobeat",
+          "Amapiano",
+          "Highlife",
+          "Fuji"
         ],
-        "answerIndex": 1
+        "answerIndex": 1,
+        "correctFeedback": "Correct. Amapiano emerged from South African house and jazz influences and is known for piano phrases and log drum rhythms.",
+        "incorrectFeedback": "Not quite. Amapiano is the South African genre recognized for piano textures and the deep log drum pulse.",
+        "insight": "Afrobeat is rooted in West Africa, especially Nigeria, while Amapiano developed in South African townships."
+      },
+      {
+        "id": "rhythm",
+        "prompt": "You hear a song driven by roomy percussion, live-band energy, and a politically charged performance style. Which genre does that most strongly suggest?",
+        "context": "Focus on the overall band feel rather than one instrument.",
+        "options": [
+          "Amapiano",
+          "Afrobeat",
+          "Maskandi",
+          "Gqom"
+        ],
+        "answerIndex": 1,
+        "correctFeedback": "Correct. Afrobeat is strongly associated with live instrumentation, layered percussion, and performance rooted in message and movement.",
+        "incorrectFeedback": "Not quite. That kind of live-band, groove-heavy energy points more toward Afrobeat than Amapiano.",
+        "insight": "Classic Afrobeat often blends horns, guitars, percussion, and socially conscious themes into long-form grooves."
+      },
+      {
+        "id": "tempo",
+        "prompt": "Which description best matches a common Amapiano listening experience?",
+        "context": "Think about pacing and dancefloor atmosphere.",
+        "options": [
+          "Fast distorted drums with punk guitars",
+          "Slow-burn house groove with airy keys and deep bass",
+          "Acoustic ballad with string quartet backing",
+          "Marching-band rhythm with brass stabs only"
+        ],
+        "answerIndex": 1,
+        "correctFeedback": "Correct. Amapiano often feels spacious and hypnotic, built on soft keys, rolling percussion, and deep bass motion.",
+        "incorrectFeedback": "Not quite. Amapiano is usually recognized by its slower, atmospheric house groove with airy piano and bass movement.",
+        "insight": "Its dance energy is often subtle and immersive rather than aggressive or rushed."
+      },
+      {
+        "id": "influence",
+        "prompt": "Which artist or scene would more likely be discussed when tracing the rise of Afrobeat?",
+        "context": "Choose the answer most connected to the genre's historical identity.",
+        "options": [
+          "Fela Kuti and Lagos live-band culture",
+          "Pretoria township house collectives only",
+          "Nashville country radio",
+          "Paris opera ensembles"
+        ],
+        "answerIndex": 0,
+        "correctFeedback": "Correct. Fela Kuti is central to Afrobeat's history and its Lagos live-band movement.",
+        "incorrectFeedback": "Not quite. Afrobeat history is strongly linked to Fela Kuti and the Lagos performance scene.",
+        "insight": "Amapiano has its own important scenes and artists, but Afrobeat's foundation is typically introduced through Fela Kuti's influence."
+      },
+      {
+        "id": "application",
+        "prompt": "If a listener says, \"This track feels like a laid-back groove built for smooth dancing and repeated piano motifs,\" which genre are they probably describing?",
+        "context": "Apply the genre traits instead of recalling a fact word-for-word.",
+        "options": [
+          "Afrobeat",
+          "Amapiano",
+          "Both equally, with no distinction",
+          "Neither genre uses piano motifs"
+        ],
+        "answerIndex": 1,
+        "correctFeedback": "Correct. The laid-back dance groove and repeated piano phrasing are classic clues for Amapiano.",
+        "incorrectFeedback": "Not quite. That smooth, piano-driven dance feel is usually associated with Amapiano.",
+        "insight": "Afrobeat can be danceable too, but its identity is less centered on those floating piano motifs."
       }
     ]
   },
