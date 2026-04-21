@@ -14,6 +14,105 @@ function buildWaveform(containerId, seed) {
   }
 }
 
+// Real-time audio visualizer using Web Audio API
+function initAudioVisualizer(audioId, containerId) {
+  const audio = document.getElementById(audioId);
+  const container = document.getElementById(containerId);
+  
+  if (!audio || !container) return;
+
+  // Create canvas for visualizer
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'width:100%;height:56px;display:block;';
+  container.innerHTML = ''; // Clear static waveform
+  container.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  canvas.width = container.offsetWidth;
+  canvas.height = 56;
+
+  // Web Audio API setup
+  let audioContext = null;
+  let analyser = null;
+  let dataArray = null;
+  let animationId = null;
+
+  function setupAudioContext() {
+    if (audioContext) return; // Already set up
+
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const source = audioContext.createMediaElementSource(audio);
+    analyser = audioContext.createAnalyser();
+    
+    analyser.fftSize = 64; // 32 frequency bars
+    const bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
+
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
+  }
+
+  function draw() {
+    if (!analyser || !dataArray) return;
+
+    animationId = requestAnimationFrame(draw);
+
+    analyser.getByteFrequencyData(dataArray);
+
+    // Clear canvas
+    ctx.fillStyle = 'transparent';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const barCount = dataArray.length;
+    const barWidth = (canvas.width / barCount) - 3;
+    const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#b84a23';
+
+    let x = 0;
+
+    for (let i = 0; i < barCount; i++) {
+      const barHeight = Math.max(8, (dataArray[i] / 255) * canvas.height);
+      
+      ctx.fillStyle = accentColor;
+      ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+      
+      x += barWidth + 3;
+    }
+  }
+
+  // Start visualizer when audio plays
+  audio.addEventListener('play', () => {
+    setupAudioContext();
+    if (audioContext && audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+    draw();
+  });
+
+  // Stop visualizer when audio pauses
+  audio.addEventListener('pause', () => {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+  });
+
+  // Cleanup when audio ends
+  audio.addEventListener('ended', () => {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+    // Reset to static bars
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    canvas.width = container.offsetWidth;
+    canvas.height = 56;
+  });
+}
+
 function initAudioPlayer(genre) {
   const audio = document.getElementById(`audio-${genre}`);
   const playBtn = document.getElementById(`play-btn-${genre}`);
@@ -156,7 +255,8 @@ function init() {
     buildWaveform("waveform-" + genre, genre === "afrobeat" ? 42 : 99);
     initPreviewButton(genre);
   } else if (page === "learning-listen" && genre) {
-    buildWaveform("waveform-listen-" + genre, genre === "afrobeat" ? 42 : 99);
+    // Use real-time audio visualizer for listen pages
+    initAudioVisualizer("audio-" + genre, "waveform-listen-" + genre);
     initAudioPlayer(genre);
   }
 }
