@@ -19,7 +19,7 @@
     "routes": [
       {
         "label": "Start Learning",
-        "href": "/pages/learning.html",
+        "href": "/pages/learning/index.html",
         "description": "Read through the learning path and content modules."
       },
       {
@@ -163,12 +163,12 @@
   "contracts": {
     "navigation": [
       "/pages/index.html",
-      "/pages/learning.html",
+      "/pages/learning/index.html",
       "/pages/quiz.html"
     ],
     "frontendOwners": {
       "pages/index.html": "Homepage",
-      "pages/learning.html": "Learning flow",
+      "pages/learning/index.html": "Learning flow",
       "pages/quiz.html": "Quiz flow"
     },
     "sharedNotes": [

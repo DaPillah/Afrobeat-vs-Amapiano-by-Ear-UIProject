@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listen: Amapiano — AfroEar</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/learning.css" />
+  </head>
+  <body data-page="learning-listen" data-genre="amapiano">
+    <main class="page-shell">
+      <nav class="top-nav">
+        <a href="/pages/index.html">Home</a>
+        <a href="/pages/learning/index.html">Learning</a>
+        <a href="/pages/quiz.html">Quiz</a>
+      </nav>
+
+      <header class="hero compact">
+        <p class="eyebrow">Guided Listen · Amapiano</p>
+        <h1>Listen &amp; Learn</h1>
+        <p class="lead">Mnike by Tyler ICU &amp; Uncle Waffles. Focus on the tempo first — count the beat.</p>
+      </header>
+
+      <section class="panel">
+        <span class="stack-meta">AMAPIANO</span>
+        <h3 style="margin: 0.75rem 0 0.25rem;">Mnike — Tyler ICU &amp; Uncle Waffles</h3>
+        <p style="color: var(--muted); margin-bottom: 1rem;">Listen carefully — notice the log drum and the piano</p>
+        
+        <!-- Hidden audio element -->
+        <audio id="audio-amapiano" preload="auto">
+          <source src="/assets/audio/mnike-tyler-icu.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+        <!-- Waveform visualization -->
+        <div id="waveform-listen-amapiano" class="waveform-mock"></div>
+        
+        <!-- Time display -->
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem;">
+          <span id="current-time-amapiano">0:00</span>
+          <span id="duration-time-amapiano">0:00</span>
+        </div>
+        
+        <!-- Progress bar -->
+        <div
+          class="progress-bar-track"
+          id="progress-track-amapiano"
+          style="height: 6px; border-radius: 3px; background: var(--border); margin-top: 0.5rem; cursor: pointer;"
+        >
+          <div
+            id="progress-fill-amapiano"
+            class="progress-bar-fill"
+            style="width: 0%; height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.1s;"
+          ></div>
+        </div>
+        
+        <!-- Play button -->
+        <button
+          id="play-btn-amapiano"
+          class="play-btn"
+          aria-label="Play"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: white;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+          "
+        >▶ Play Mnike – Tyler ICU &amp; Uncle Waffles</button>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <h2>What to Listen For</h2>
+        </div>
+        <div class="stack-list">
+          <div class="stack-item" style="border-left: 3px solid var(--accent); padding-left: 1.25rem;">
+            <strong style="color: var(--accent);">🎵 ~112 BPM ← FEEL THIS FIRST</strong>
+            <p style="margin: 0.5rem 0 0;">Faster than Afrobeat. Count the beat — it bounces more.</p>
+          </div>
+          <div class="stack-item" style="border-left: 3px solid var(--accent); padding-left: 1.25rem;">
+            <strong style="color: var(--accent);">🥁 THEN NOTICE THE LOG DRUM</strong>
+            <p style="margin: 0.5rem 0 0;">Deep BOOM-tss rolling pattern. Piano keys float on top.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 style="margin-bottom: 1rem;">Ready to test your ear?</h2>
+        <a href="/pages/quiz.html" class="button-link">I'm ready → Take the Quiz</a>
+        <div style="margin-top: 1rem;">
+          <a href="/pages/learning/amapiano.html">← Back to Amapiano overview</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="/assets/js/data.js"></script>
+    <script src="/assets/js/learning.js"></script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amapiano — AfroEar</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/learning.css" />
+  </head>
+  <body data-page="learning-overview" data-genre="amapiano">
+    <main class="page-shell">
+      <nav class="top-nav">
+        <a href="/pages/index.html">Home</a>
+        <a href="/pages/learning/index.html">Learning</a>
+        <a href="/pages/quiz.html">Quiz</a>
+      </nav>
+
+      <header class="hero compact">
+        <p class="eyebrow">Genre 02 · Amapiano</p>
+        <h1>Amapiano</h1>
+        <p class="lead">Born in South Africa in the 2010s. Faster, bouncier, and piano-driven.</p>
+      </header>
+
+      <section class="panel">
+        <div class="section-heading">
+          <h2>Key Facts</h2>
+        </div>
+        <div class="card-grid">
+          <div class="card">
+            <span class="stack-meta">🎵 BPM</span>
+            <p>~112 — faster than Afrobeat, bouncy</p>
+          </div>
+          <div class="card">
+            <span class="stack-meta">🥁 Drum</span>
+            <p>Log drum — deep rolling BOOM-tss</p>
+          </div>
+          <div class="card">
+            <span class="stack-meta">🎹 Keys</span>
+            <p>Piano keys float above the groove</p>
+          </div>
+          <div class="card">
+            <span class="stack-meta">📍 Origin</span>
+            <p>South Africa, 2010s</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <h2>Reference Track</h2>
+        </div>
+        <p><strong>Mnike — Tyler ICU &amp; Uncle Waffles</strong></p>
+        
+        <!-- Hidden audio element -->
+        <audio id="audio-amapiano-preview" preload="auto">
+          <source src="/assets/audio/mnike-tyler-icu.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+        <!-- Waveform visualization -->
+        <div id="waveform-amapiano" class="waveform-mock"></div>
+        
+        <!-- Simple play button for preview -->
+        <button
+          id="play-btn-amapiano-preview"
+          class="play-btn"
+          aria-label="Play Preview"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            margin-top: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+          "
+          onmouseover="this.style.background='var(--accent)'; this.style.color='white';"
+          onmouseout="this.style.background='transparent'; this.style.color='var(--accent)';"
+        >▶ Preview Track</button>
+        
+        <div class="stack-list" style="margin-top: 1rem;">
+          <div class="stack-item" style="color: var(--accent); font-weight: 700;">
+            🎵 ~112 BPM — FASTER than Afrobeat (~95) ← KEY DIFFERENCE
+          </div>
+          <div class="stack-item">
+            Then notice: log drum — BOOM-tss rolling pattern
+          </div>
+        </div>
+        <div style="margin-top: 1.25rem;">
+          <a href="listen-amapiano.html" class="button-link">Listen &amp; Learn →</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="/assets/js/data.js"></script>
+    <script src="/assets/js/learning.js"></script>
+  </body>
+</html>

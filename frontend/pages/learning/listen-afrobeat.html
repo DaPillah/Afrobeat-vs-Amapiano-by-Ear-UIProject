@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listen: Afrobeat — AfroEar</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/learning.css" />
+  </head>
+  <body data-page="learning-listen" data-genre="afrobeat">
+    <main class="page-shell">
+      <nav class="top-nav">
+        <a href="/pages/index.html">Home</a>
+        <a href="/pages/learning/index.html">Learning</a>
+        <a href="/pages/quiz.html">Quiz</a>
+      </nav>
+
+      <header class="hero compact">
+        <p class="eyebrow">Guided Listen · Afrobeat</p>
+        <h1>Listen &amp; Learn</h1>
+        <p class="lead">Heis by Rema. Focus on the tempo first — count the beat.</p>
+      </header>
+
+      <section class="panel">
+        <span class="stack-meta">AFROBEAT</span>
+        <h3 style="margin: 0.75rem 0 0.25rem;">Heis — Rema</h3>
+        <p style="color: var(--muted); margin-bottom: 1rem;">Listen carefully — notice the drum pattern</p>
+        
+        <!-- Hidden audio element -->
+        <audio id="audio-afrobeat" preload="auto">
+          <source src="/assets/audio/heis-rema.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        
+        <!-- Waveform visualization -->
+        <div id="waveform-listen-afrobeat" class="waveform-mock"></div>
+        
+        <!-- Time display -->
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem;">
+          <span id="current-time-afrobeat">0:00</span>
+          <span id="duration-time-afrobeat">0:00</span>
+        </div>
+        
+        <!-- Progress bar -->
+        <div
+          class="progress-bar-track"
+          id="progress-track-afrobeat"
+          style="height: 6px; border-radius: 3px; background: var(--border); margin-top: 0.5rem; cursor: pointer;"
+        >
+          <div
+            id="progress-fill-afrobeat"
+            class="progress-bar-fill"
+            style="width: 0%; height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.1s;"
+          ></div>
+        </div>
+        
+        <!-- Play button -->
+        <button
+          id="play-btn-afrobeat"
+          class="play-btn"
+          aria-label="Play"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: white;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+          "
+        >▶ Play Heis – Rema</button>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <h2>What to Listen For</h2>
+        </div>
+        <div class="stack-list">
+          <div class="stack-item" style="border-left: 3px solid var(--accent); padding-left: 1.25rem;">
+            <strong style="color: var(--accent);">🎵 ~95 BPM ← FEEL THIS FIRST</strong>
+            <p style="margin: 0.5rem 0 0;">Count the beat: one-two-three-four. It feels swung, not straight.</p>
+          </div>
+          <div class="stack-item" style="border-left: 3px solid var(--accent); padding-left: 1.25rem;">
+            <strong style="color: var(--accent);">🥁 THEN NOTICE THE DRUM</strong>
+            <p style="margin: 0.5rem 0 0;">Talking drum: do-do-do-DUM — syncopated hit on the off-beat.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 style="margin-bottom: 1rem;">Ready to test your ear?</h2>
+        <a href="/pages/quiz.html" class="button-link">I'm ready → Take the Quiz</a>
+        <div style="margin-top: 1rem;">
+          <a href="/pages/learning/afrobeat.html">← Back to Afrobeat overview</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="/assets/js/data.js"></script>
+    <script src="/assets/js/learning.js"></script>
+  </body>
+</html>

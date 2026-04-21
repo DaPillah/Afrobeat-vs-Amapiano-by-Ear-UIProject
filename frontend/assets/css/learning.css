@@ -1,0 +1,286 @@
+/* ═══════════════════════════════════════════════════════════
+   AfroEar — Learning Section
+   Afro-centric visual identity
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Genre colour tokens
+   Override the shared CSS variables so every component that
+   already uses var(--accent) etc. picks up the genre palette
+   automatically — including the JS-built waveform bars.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-genre="afrobeat"] {
+  --accent:      #b84a23;
+  --accent-soft: #f7e1d5;
+  --border:      #dfbfaa;
+  --shadow:      0 18px 40px rgba(90, 30, 10, 0.13);
+}
+
+body[data-genre="amapiano"] {
+  --accent:      #a87210;
+  --accent-soft: #fdefc2;
+  --border:      #e0d098;
+  --shadow:      0 18px 40px rgba(80, 60, 0, 0.13);
+}
+
+/* ── Body background
+   Richer warm earth gradient, slightly deeper than the shared
+   version so learning pages feel distinct at a glance.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] {
+  background:
+    radial-gradient(ellipse 80% 50% at top left,  rgba(252, 228, 188, 0.75) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at bottom right, rgba(31, 111, 95, 0.09) 0%, transparent 60%),
+    linear-gradient(165deg, #ede2ce 0%, #f4efe6 55%, #ece3d2 100%);
+}
+
+/* ── Hero — dark earth gradient, woven texture, kente strip
+   Deep brown-to-forest-green gradient gives the hero a rich,
+   grounded feel. The diagonal grid alludes to woven kente cloth.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] .hero {
+  background: linear-gradient(150deg, #1e0c06 0%, #2c1a0c 45%, #163226 100%);
+  border-color: transparent;
+  color: #fef8f0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Woven-grid texture overlay */
+body[data-page^="learning"] .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.038) 0px, rgba(255, 255, 255, 0.038) 1px,
+      transparent 1px, transparent 28px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.038) 0px, rgba(255, 255, 255, 0.038) 1px,
+      transparent 1px, transparent 28px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Kente strip — default (learning entry, both genres represented) */
+body[data-page^="learning"] .hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f5b228  0px,  #f5b228 14px,
+    #c4522a 14px,  #c4522a 28px,
+    #1f6f5f 28px,  #1f6f5f 42px,
+    #1c0e07 42px,  #1c0e07 56px
+  );
+  z-index: 1;
+}
+
+/* Afrobeat kente: terracotta-led rhythm */
+body[data-genre="afrobeat"] .hero::after {
+  background: repeating-linear-gradient(
+    90deg,
+    #c4522a  0px,  #c4522a 12px,
+    #1c0e07 12px,  #1c0e07 24px,
+    #f5b228 24px,  #f5b228 36px,
+    #c4522a 36px,  #c4522a 48px,
+    #1f6f5f 48px,  #1f6f5f 60px,
+    #1c0e07 60px,  #1c0e07 72px
+  );
+}
+
+/* Amapiano kente: gold-led rhythm */
+body[data-genre="amapiano"] .hero::after {
+  background: repeating-linear-gradient(
+    90deg,
+    #d4930c  0px,  #d4930c 12px,
+    #1c0e07 12px,  #1c0e07 24px,
+    #d4930c 24px,  #d4930c 36px,
+    #1f6f5f 36px,  #1f6f5f 48px,
+    #1c0e07 48px,  #1c0e07 60px,
+    #d4930c 60px,  #d4930c 72px
+  );
+}
+
+/* Lift hero children above the pseudo-elements */
+body[data-page^="learning"] .hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+body[data-page^="learning"] .hero .eyebrow {
+  color: #f5b228;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+body[data-page^="learning"] .hero h1 {
+  color: #fef8f0;
+}
+
+body[data-page^="learning"] .hero .lead {
+  color: rgba(254, 248, 240, 0.72);
+}
+
+/* ── Panels
+   Accent-colored top border ties each panel to the genre
+   palette without changing the overall card shape.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] .panel {
+  border-top: 3px solid var(--accent);
+}
+
+/* ── Section headings
+   Treat h2 inside panels like a label — uppercase,
+   letter-spaced, accent-colored — matching the eyebrow style.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] .section-heading h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* ── Genre / status pills (.stack-meta)
+   Flip from soft-background to solid accent so pills read
+   as bold badges rather than quiet labels.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] .stack-meta {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+/* ── Cards
+   Accent left border gives fact cards a spine of colour.
+   White background on hover swaps in the genre's soft tint.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] .card {
+  background: var(--surface-strong);
+  border-left: 3px solid var(--accent);
+}
+
+body[data-page^="learning"] .card:hover {
+  background: var(--accent-soft);
+}
+
+/* Learning entry: colour-code each genre card independently */
+body[data-page="learning-entry"] #module-list .card:nth-child(1) {
+  border-left-color: #b84a23;
+}
+body[data-page="learning-entry"] #module-list .card:nth-child(1):hover {
+  background: #f7e1d5;
+  border-color: #b84a23;
+}
+
+body[data-page="learning-entry"] #module-list .card:nth-child(2) {
+  border-left-color: #a87210;
+}
+body[data-page="learning-entry"] #module-list .card:nth-child(2):hover {
+  background: #fdefc2;
+  border-color: #a87210;
+}
+
+/* ── Stack items ─────────────────────────────────────────── */
+
+body[data-page^="learning"] .stack-item {
+  background: var(--surface-strong);
+}
+
+/* ── Navigation
+   Glassy white pills so they float above the warmer
+   background without competing with the hero.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] .top-nav a {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+body[data-page^="learning"] .top-nav a:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Button links (.button-link)
+   Solid accent background — unlike nav pills, CTAs should
+   command attention.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] .button-link {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+body[data-page^="learning"] .button-link:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* ── Back / inline links on listen pages ─────────────────── */
+
+body[data-page="learning-listen"] .panel:last-child a:not(.button-link) {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Waveform container
+   Soft accent tint behind the bars so the waveform reads
+   as a contained visualiser element.
+   ─────────────────────────────────────────────────────────── */
+
+body[data-page^="learning"] .waveform-mock {
+  border-radius: 10px;
+  padding: 10px 10px 6px;
+  background: var(--accent-soft);
+  margin-bottom: 0.25rem;
+}
+
+/* ── Play button hover ────────────────────────────────────── */
+
+body[data-page="learning-listen"] .play-btn {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+body[data-page="learning-listen"] .play-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* ── Progress bar track ───────────────────────────────────── */
+
+body[data-page="learning-listen"] .progress-bar-track {
+  border-radius: 999px !important;
+  overflow: hidden;
+}
+
+/* ── Listen page: h2 outside .section-heading ────────────── */
+
+body[data-page="learning-listen"] .panel:last-child h2 {
+  font-size: 1.25rem;
+  color: var(--text);
+}
