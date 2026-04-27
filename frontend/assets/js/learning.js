@@ -245,6 +245,135 @@ function initPreviewButton(genre) {
   });
 }
 
+function getFlowState(pageId) {
+  const index = LEARNING_FLOW.findIndex((step) => step.id === pageId);
+  return {
+    currentIndex: index,
+    currentStep: LEARNING_FLOW[index],
+    previousStep: index > 0 ? LEARNING_FLOW[index - 1] : null,
+    nextStep: index >= 0 && index < LEARNING_FLOW.length - 1 ? LEARNING_FLOW[index + 1] : null,
+    totalSteps: LEARNING_FLOW.length,
+  };
+}
+
+function renderLessonProgress(pageId, mountId) {
+  const mount = document.getElementById(mountId);
+  if (!mount) return;
+
+  const state = getFlowState(pageId);
+  if (state.currentIndex < 0) return;
+
+  mount.innerHTML = `
+    <div class="lesson-progress-bar">
+      ${LEARNING_FLOW.map((step, index) => `
+        <span class="lesson-progress-node ${index <= state.currentIndex ? "is-complete" : ""}"></span>
+      `).join("")}
+    </div>
+    <div class="lesson-progress-copy">
+      <span>Step ${state.currentIndex + 1} of ${state.totalSteps}</span>
+      <strong>${state.currentStep.title}</strong>
+    </div>
+  `;
+}
+
+function renderLessonPager(pageId, mountId, options = {}) {
+  const mount = document.getElementById(mountId);
+  if (!mount) return;
+
+  const state = getFlowState(pageId);
+  if (state.currentIndex < 0) return;
+
+  const previous = state.previousStep
+    ? `<a href="${state.previousStep.path}" class="lesson-nav-link">← ${options.previousLabel || "Previous lesson"}</a>`
+    : "";
+
+  const nextLabel = options.nextLabel || "Next lesson";
+  const next = state.nextStep
+    ? `<a href="${state.nextStep.path}" class="button-link">${nextLabel} →</a>`
+    : `<a href="/pages/quiz.html" class="button-link">Start quiz →</a>`;
+
+  mount.innerHTML = `
+    <div class="lesson-pager">
+      <div>${previous}</div>
+      <div>${next}</div>
+    </div>
+  `;
+}
+
+function renderListeningPrompts(genre, mountId) {
+  const mount = document.getElementById(mountId);
+  const info = LEARNING_DATA[genre];
+  if (!mount || !info?.listeningPrompts) return;
+
+  mount.innerHTML = info.listeningPrompts
+    .map(
+      (prompt, index) => `
+        <div class="stack-item listen-callout">
+          <strong>${index + 1}. Listen for this</strong>
+          <p>${prompt}</p>
+        </div>
+      `
+    )
+    .join("");
+}
+
+function renderCompare() {
+  renderLessonProgress("compare", "lesson-progress");
+  renderLessonPager("compare", "lesson-pager");
+
+  const comparisonGrid = document.getElementById("comparison-grid");
+  if (comparisonGrid) {
+    comparisonGrid.innerHTML = COMPARISON_DATA.map((item) => `
+      <article class="compare-card">
+        <div class="compare-label">${item.label}</div>
+        <div class="compare-columns">
+          <div class="compare-side compare-side-afrobeat">
+            <h3>Afrobeat</h3>
+            <p>${item.afrobeat}</p>
+          </div>
+          <div class="compare-side compare-side-amapiano">
+            <h3>Amapiano</h3>
+            <p>${item.amapiano}</p>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  }
+}
+
+function renderRecap() {
+  renderLessonProgress("recap", "lesson-progress");
+  renderLessonPager("recap", "lesson-pager", { nextLabel: "Start quiz" });
+
+  const recapList = document.getElementById("recap-list");
+  if (recapList) {
+    recapList.innerHTML = `
+      <article class="stack-item recap-card">
+        <div class="compare-label">Afrobeat</div>
+        <ul class="recap-points">
+          ${LEARNING_DATA.afrobeat.recapPoints.map((point) => `<li>${point}</li>`).join("")}
+        </ul>
+      </article>
+      <article class="stack-item recap-card">
+        <div class="compare-label">Amapiano</div>
+        <ul class="recap-points">
+          ${LEARNING_DATA.amapiano.recapPoints.map((point) => `<li>${point}</li>`).join("")}
+        </ul>
+      </article>
+    `;
+  }
+
+  const recapChecks = document.getElementById("recap-checks");
+  if (recapChecks) {
+    recapChecks.innerHTML = RECAP_CHECKS.map((item) => `
+      <article class="stack-item recap-check">
+        <h3>${item.prompt}</h3>
+        <p><strong>Best answer:</strong> ${item.answer}</p>
+      </article>
+    `).join("");
+  }
+}
+
 function init() {
   const page = document.body.dataset.page;
   const genre = document.body.dataset.genre;
@@ -254,10 +383,19 @@ function init() {
   } else if (page === "learning-overview" && genre) {
     buildWaveform("waveform-" + genre, genre === "afrobeat" ? 42 : 99);
     initPreviewButton(genre);
+    renderLessonProgress(`${genre}-overview`, "lesson-progress");
+    renderLessonPager(`${genre}-overview`, "lesson-pager");
   } else if (page === "learning-listen" && genre) {
     // Use real-time audio visualizer for listen pages
     initAudioVisualizer("audio-" + genre, "waveform-listen-" + genre);
     initAudioPlayer(genre);
+    renderLessonProgress(`${genre}-listen`, "lesson-progress");
+    renderLessonPager(`${genre}-listen`, "lesson-pager");
+    renderListeningPrompts(genre, `listen-prompts-${genre}`);
+  } else if (page === "learning-compare") {
+    renderCompare();
+  } else if (page === "learning-recap") {
+    renderRecap();
   }
 }
 

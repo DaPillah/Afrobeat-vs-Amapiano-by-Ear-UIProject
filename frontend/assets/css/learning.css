@@ -284,3 +284,139 @@ body[data-page="learning-listen"] .panel:last-child h2 {
   font-size: 1.25rem;
   color: var(--text);
 }
+
+.lesson-progress {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lesson-progress-bar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+
+.lesson-progress-node {
+  height: 0.4rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.lesson-progress-node.is-complete {
+  background: #f5b228;
+}
+
+.lesson-progress-copy {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: rgba(254, 248, 240, 0.82);
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.lesson-progress-copy strong {
+  color: #fff;
+}
+
+.lesson-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.lesson-nav-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.listen-callout strong,
+.compare-label {
+  color: var(--accent);
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.listen-callout p {
+  margin: 0;
+}
+
+.comparison-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.compare-card {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface-strong);
+  padding: 1.25rem;
+}
+
+.compare-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.compare-side {
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.compare-side h3 {
+  margin-bottom: 0.4rem;
+}
+
+.compare-side p {
+  margin-bottom: 0;
+}
+
+.compare-side-afrobeat {
+  background: #f7e1d5;
+  border: 1px solid #dfbfaa;
+}
+
+.compare-side-amapiano {
+  background: #fdefc2;
+  border: 1px solid #e0d098;
+}
+
+.recap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.recap-card,
+.recap-check {
+  border-left: 3px solid var(--accent);
+}
+
+.recap-points {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.recap-points li + li {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 720px) {
+  .compare-columns,
+  .recap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-pager {
+    align-items: stretch;
+  }
+}
