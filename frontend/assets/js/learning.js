@@ -300,6 +300,161 @@ function renderLessonPager(pageId, mountId, options = {}) {
   `;
 }
 
+function renderMoreTracks(genre, mountId) {
+  const mount = document.getElementById(mountId);
+  const info = LEARNING_DATA[genre];
+  if (!mount || !info?.moreTracks?.length) return;
+
+  mount.innerHTML = info.moreTracks
+    .map(
+      (track) => `
+        <div class="track-item">
+          <span class="track-name">${track.trackName}</span>
+          <span class="track-artist">${track.artist}</span>
+        </div>
+      `
+    )
+    .join("");
+}
+
+// Render more songs with playback functionality for listen pages
+function renderMoreSongsWithPlayer(genre, mountId) {
+  const mount = document.getElementById(mountId);
+  const info = LEARNING_DATA[genre];
+  if (!mount || !info?.moreTracks?.length) return;
+
+  mount.innerHTML = info.moreTracks
+    .map(
+      (track) => `
+        <div class="more-song-item" id="song-container-${track.id}">
+          <div class="more-song-header">
+            <div class="more-song-info">
+              <h4 class="more-song-title">${track.trackName}</h4>
+              <p class="more-song-artist">${track.artist}</p>
+            </div>
+            <button
+              id="play-btn-${track.id}"
+              class="more-song-play-btn"
+              aria-label="Play ${track.trackName}"
+            >▶</button>
+          </div>
+          <audio id="audio-${track.id}" preload="metadata">
+            <source src="/assets/audio/${track.audioFile}" type="audio/webm">
+            <source src="/assets/audio/${track.audioFile.replace('.webm', '.mp3')}" type="audio/mpeg">
+          </audio>
+          <div class="more-song-progress-container">
+            <div class="more-song-time">
+              <span id="current-time-${track.id}">0:00</span>
+              <span id="duration-time-${track.id}">0:00</span>
+            </div>
+            <div
+              class="more-song-progress-track"
+              id="progress-track-${track.id}"
+            >
+              <div
+                id="progress-fill-${track.id}"
+                class="more-song-progress-fill"
+              ></div>
+            </div>
+          </div>
+        </div>
+      `
+    )
+    .join("");
+
+  // Initialize each song player
+  info.moreTracks.forEach((track) => {
+    initMoreSongPlayer(track.id);
+  });
+}
+
+// Initialize audio player for additional songs
+function initMoreSongPlayer(trackId) {
+  const audio = document.getElementById(`audio-${trackId}`);
+  const playBtn = document.getElementById(`play-btn-${trackId}`);
+  const progressFill = document.getElementById(`progress-fill-${trackId}`);
+  const progressTrack = document.getElementById(`progress-track-${trackId}`);
+  const currentTimeEl = document.getElementById(`current-time-${trackId}`);
+  const durationTimeEl = document.getElementById(`duration-time-${trackId}`);
+
+  if (!audio || !playBtn) return;
+
+  // Format time as MM:SS
+  function formatTime(seconds) {
+    if (isNaN(seconds)) return "0:00";
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  }
+
+  // Update progress bar and time display
+  function updateProgress() {
+    if (audio.duration) {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      if (progressFill) progressFill.style.width = `${percent}%`;
+      if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
+    }
+  }
+
+  // Pause all other audio players
+  function pauseOtherPlayers() {
+    document.querySelectorAll('audio').forEach((otherAudio) => {
+      if (otherAudio.id !== `audio-${trackId}` && !otherAudio.paused) {
+        otherAudio.pause();
+        const otherBtn = document.getElementById(otherAudio.id.replace('audio-', 'play-btn-'));
+        if (otherBtn) otherBtn.textContent = "▶";
+      }
+    });
+  }
+
+  // Set duration when metadata loads
+  audio.addEventListener("loadedmetadata", () => {
+    if (durationTimeEl) durationTimeEl.textContent = formatTime(audio.duration);
+  });
+
+  // Update progress during playback
+  audio.addEventListener("timeupdate", updateProgress);
+
+  // Reset button when track ends
+  audio.addEventListener("ended", () => {
+    playBtn.textContent = "▶";
+    if (progressFill) progressFill.style.width = "0%";
+    if (currentTimeEl) currentTimeEl.textContent = "0:00";
+  });
+
+  // Play/pause toggle
+  playBtn.addEventListener("click", () => {
+    if (audio.paused) {
+      pauseOtherPlayers();
+      audio.play();
+      playBtn.textContent = "⏸";
+    } else {
+      audio.pause();
+      playBtn.textContent = "▶";
+    }
+  });
+
+  // Click on progress bar to seek
+  if (progressTrack) {
+    progressTrack.addEventListener("click", (e) => {
+      const rect = progressTrack.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const percent = clickX / rect.width;
+      audio.currentTime = percent * audio.duration;
+    });
+  }
+
+  // Handle errors
+  audio.addEventListener("error", () => {
+    console.warn(`Audio file not found for ${trackId}. Place the file in the correct directory.`);
+    playBtn.disabled = true;
+    playBtn.textContent = "⚠";
+    playBtn.style.opacity = "0.5";
+    playBtn.style.cursor = "not-allowed";
+    playBtn.title = "Audio file not available. Please download using yt-dlp.";
+  });
+}
+
 function renderListeningPrompts(genre, mountId) {
   const mount = document.getElementById(mountId);
   const info = LEARNING_DATA[genre];
@@ -385,6 +540,7 @@ function init() {
     initPreviewButton(genre);
     renderLessonProgress(`${genre}-overview`, "lesson-progress");
     renderLessonPager(`${genre}-overview`, "lesson-pager");
+    renderMoreTracks(genre, `more-tracks-${genre}`);
   } else if (page === "learning-listen" && genre) {
     // Use real-time audio visualizer for listen pages
     initAudioVisualizer("audio-" + genre, "waveform-listen-" + genre);
@@ -392,6 +548,7 @@ function init() {
     renderLessonProgress(`${genre}-listen`, "lesson-progress");
     renderLessonPager(`${genre}-listen`, "lesson-pager");
     renderListeningPrompts(genre, `listen-prompts-${genre}`);
+    renderMoreSongsWithPlayer(genre, `more-songs-${genre}`);
   } else if (page === "learning-compare") {
     renderCompare();
   } else if (page === "learning-recap") {

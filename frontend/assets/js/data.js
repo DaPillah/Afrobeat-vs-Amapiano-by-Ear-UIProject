@@ -31,6 +31,38 @@ const LEARNING_DATA = {
       "Talking drum accents help give the groove its syncopated character.",
       "Its identity is tied closely to Nigeria and a strong performance tradition.",
     ],
+    moreTracks: [
+      {
+        trackName: "Commas",
+        artist: "Ayra Starr",
+        audioFile: "afrobeat/commas-ayra-starr.webm",
+        id: "commas-ayra-starr"
+      },
+      {
+        trackName: "Woman",
+        artist: "Rema",
+        audioFile: "afrobeat/woman-rema.webm",
+        id: "woman-rema"
+      },
+      {
+        trackName: "Kese",
+        artist: "Wizkid",
+        audioFile: "afrobeat/kese-wizkid.webm",
+        id: "kese-wizkid"
+      },
+      {
+        trackName: "Ifeoma",
+        artist: "Ozedikus",
+        audioFile: "afrobeat/ifeoma-ozedikus.webm",
+        id: "ifeoma-ozedikus"
+      },
+      {
+        trackName: "Holy Ghost",
+        artist: "Omah Lay",
+        audioFile: "afrobeat/holy-ghost-omah-lay.webm",
+        id: "holy-ghost-omah-lay"
+      },
+    ],
   },
   amapiano: {
     id: "amapiano",
@@ -63,6 +95,38 @@ const LEARNING_DATA = {
       "Usually feels faster, lighter, and more hypnotic than Afrobeat.",
       "The log drum is one of the clearest clues that you are hearing Amapiano.",
       "Its identity is strongly connected to South African dance and club culture.",
+    ],
+    moreTracks: [
+      {
+        trackName: "Water",
+        artist: "Tyla",
+        audioFile: "amapiano/water-tyla.webm",
+        id: "water-tyla"
+      },
+      {
+        trackName: "Tshwala Bam",
+        artist: "TitoM & Yuppe",
+        audioFile: "amapiano/tshwala-bam.webm",
+        id: "tshwala-bam"
+      },
+      {
+        trackName: "Dalie",
+        artist: "Kamo Mphela",
+        audioFile: "amapiano/dalie-kamo-mphela.webm",
+        id: "dalie-kamo-mphela"
+      },
+      {
+        trackName: "Zenzele",
+        artist: "Uncle Waffles",
+        audioFile: "amapiano/zenzele-uncle-waffles.webm",
+        id: "zenzele-uncle-waffles"
+      },
+      {
+        trackName: "Shake Ah",
+        artist: "Tyla & Tony Durado",
+        audioFile: "amapiano/shake-ah-tyla-tony-durado.webm",
+        id: "shake-ah-tyla-tony-durado"
+      },
     ],
   },
 };

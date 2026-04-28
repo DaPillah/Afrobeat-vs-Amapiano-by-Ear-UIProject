@@ -410,6 +410,145 @@ body[data-page="learning-listen"] .panel:last-child h2 {
   margin-top: 0.5rem;
 }
 
+.track-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.track-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface-strong);
+  border-radius: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+.track-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.track-artist {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* ── More Songs Section with Audio Players ──────────────── */
+
+.more-songs-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.more-song-item {
+  background: var(--surface-strong);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border-left: 3px solid var(--accent);
+  transition: all 0.2s ease;
+}
+
+.more-song-item:hover {
+  background: var(--accent-soft);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.more-song-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.more-song-info {
+  flex: 1;
+}
+
+.more-song-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: var(--text);
+}
+
+.more-song-artist {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.more-song-play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: white;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  padding-left: 3px;
+}
+
+.more-song-play-btn:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.more-song-play-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.more-song-play-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--border);
+  border-color: var(--border);
+}
+
+.more-song-progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.more-song-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.more-song-progress-track {
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.more-song-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.more-song-progress-track:hover .more-song-progress-fill {
+  box-shadow: 0 0 8px var(--accent);
+}
+
 @media (max-width: 720px) {
   .compare-columns,
   .recap-grid {
@@ -418,5 +557,11 @@ body[data-page="learning-listen"] .panel:last-child h2 {
 
   .lesson-pager {
     align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .track-grid {
+    grid-template-columns: 1fr;
   }
 }
