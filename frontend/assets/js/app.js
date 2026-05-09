@@ -18,27 +18,13 @@ function createCard(title, description, href) {
   return card;
 }
 
-function renderHome(home, contracts) {
+function renderHome(home) {
   document.getElementById("page-title").textContent = home.title;
   document.getElementById("page-tagline").textContent = home.tagline;
 
   const routeGrid = document.getElementById("route-grid");
   home.routes.forEach((route) => {
     routeGrid.appendChild(createCard(route.label, route.description, route.href));
-  });
-
-  const teamList = document.getElementById("team-list");
-  home.team.forEach((member) => {
-    const item = document.createElement("li");
-    item.innerHTML = `<strong>${member.name}</strong><span>${member.responsibility}</span>`;
-    teamList.appendChild(item);
-  });
-
-  const contractList = document.getElementById("contract-list");
-  contracts.sharedNotes.forEach((note) => {
-    const item = document.createElement("li");
-    item.textContent = note;
-    contractList.appendChild(item);
   });
 }
 
@@ -402,11 +388,8 @@ async function init() {
 
   try {
     if (page === "home") {
-      const [home, contracts] = await Promise.all([
-        fetchJson("/api/home"),
-        fetchJson("/api/contracts")
-      ]);
-      renderHome(home, contracts);
+      const home = await fetchJson("/api/home");
+      renderHome(home);
     }
 
     if (page === "learning") {
