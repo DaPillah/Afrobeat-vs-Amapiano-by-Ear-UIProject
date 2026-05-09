@@ -61,6 +61,7 @@
       "highlights": [
         "10 multiple-choice questions",
         "5 listen-and-classify audio clips",
+        "Listening clips appear throughout the quiz, not only at the end",
         "Instant answer feedback after every choice",
         "Final score with result tier and answer review"
       ]
@@ -100,66 +101,6 @@
         "insight": "Afrobeat is rooted in West Africa, especially Nigeria, while Amapiano developed in South African townships."
       },
       {
-        "id": "rhythm",
-        "prompt": "You hear a song driven by roomy percussion, live-band energy, and a politically charged performance style. Which genre does that most strongly suggest?",
-        "context": "Focus on the overall band feel rather than one instrument.",
-        "options": [
-          "Amapiano",
-          "Afrobeat",
-          "Maskandi",
-          "Gqom"
-        ],
-        "answerIndex": 1,
-        "correctFeedback": "Correct. Afrobeat is strongly associated with live instrumentation, layered percussion, and performance rooted in message and movement.",
-        "incorrectFeedback": "Not quite. That kind of live-band, groove-heavy energy points more toward Afrobeat than Amapiano.",
-        "insight": "Classic Afrobeat often blends horns, guitars, percussion, and socially conscious themes into long-form grooves."
-      },
-      {
-        "id": "tempo",
-        "prompt": "Which description best matches a common Amapiano listening experience?",
-        "context": "Think about pacing and dancefloor atmosphere.",
-        "options": [
-          "Fast distorted drums with punk guitars",
-          "Slow-burn house groove with airy keys and deep bass",
-          "Acoustic ballad with string quartet backing",
-          "Marching-band rhythm with brass stabs only"
-        ],
-        "answerIndex": 1,
-        "correctFeedback": "Correct. Amapiano often feels spacious and hypnotic, built on soft keys, rolling percussion, and deep bass motion.",
-        "incorrectFeedback": "Not quite. Amapiano is usually recognized by its slower, atmospheric house groove with airy piano and bass movement.",
-        "insight": "Its dance energy is often subtle and immersive rather than aggressive or rushed."
-      },
-      {
-        "id": "influence",
-        "prompt": "Which artist or scene would more likely be discussed when tracing the rise of Afrobeat?",
-        "context": "Choose the answer most connected to the genre's historical identity.",
-        "options": [
-          "Fela Kuti and Lagos live-band culture",
-          "Pretoria township house collectives only",
-          "Nashville country radio",
-          "Paris opera ensembles"
-        ],
-        "answerIndex": 0,
-        "correctFeedback": "Correct. Fela Kuti is central to Afrobeat's history and its Lagos live-band movement.",
-        "incorrectFeedback": "Not quite. Afrobeat history is strongly linked to Fela Kuti and the Lagos performance scene.",
-        "insight": "Amapiano has its own important scenes and artists, but Afrobeat's foundation is typically introduced through Fela Kuti's influence."
-      },
-      {
-        "id": "application",
-        "prompt": "If a listener says, \"This track feels like a laid-back groove built for smooth dancing and repeated piano motifs,\" which genre are they probably describing?",
-        "context": "Apply the genre traits instead of recalling a fact word-for-word.",
-        "options": [
-          "Afrobeat",
-          "Amapiano",
-          "Both equally, with no distinction",
-          "Neither genre uses piano motifs"
-        ],
-        "answerIndex": 1,
-        "correctFeedback": "Correct. The laid-back dance groove and repeated piano phrasing are classic clues for Amapiano.",
-        "incorrectFeedback": "Not quite. That smooth, piano-driven dance feel is usually associated with Amapiano.",
-        "insight": "Afrobeat can be danceable too, but its identity is less centered on those floating piano motifs."
-      },
-      {
         "id": "listen-afrobeat-woman",
         "prompt": "Listen to the clip and choose the genre that fits it best.",
         "context": "Let the groove settle first, then decide whether it feels more live-band Afrobeat or smoother Amapiano.",
@@ -182,6 +123,21 @@
         "correctFeedback": "Correct. The clip leans Afrobeat with its lively vocal presence, grounded groove, and more performance-driven rhythmic energy.",
         "incorrectFeedback": "Not quite. This clip fits Afrobeat more than Amapiano because it feels more vocal-forward and live-groove driven.",
         "insight": "This listening clip is \"Woman\" by Rema. The clue is less about memorizing the song and more about noticing the rhythmic lift and performance energy."
+      },
+      {
+        "id": "rhythm",
+        "prompt": "You hear a song driven by roomy percussion, live-band energy, and a politically charged performance style. Which genre does that most strongly suggest?",
+        "context": "Focus on the overall band feel rather than one instrument.",
+        "options": [
+          "Amapiano",
+          "Afrobeat",
+          "Maskandi",
+          "Gqom"
+        ],
+        "answerIndex": 1,
+        "correctFeedback": "Correct. Afrobeat is strongly associated with live instrumentation, layered percussion, and performance rooted in message and movement.",
+        "incorrectFeedback": "Not quite. That kind of live-band, groove-heavy energy points more toward Afrobeat than Amapiano.",
+        "insight": "Classic Afrobeat often blends horns, guitars, percussion, and socially conscious themes into long-form grooves."
       },
       {
         "id": "listen-amapiano-water",
@@ -208,6 +164,21 @@
         "insight": "This listening clip is \"Water\" by Tyla. The big clue is the floating texture and log-drum-style pulse rather than a live-band push."
       },
       {
+        "id": "tempo",
+        "prompt": "Which description best matches a common Amapiano listening experience?",
+        "context": "Think about pacing and dancefloor atmosphere.",
+        "options": [
+          "Fast distorted drums with punk guitars",
+          "Slow-burn house groove with airy keys and deep bass",
+          "Acoustic ballad with string quartet backing",
+          "Marching-band rhythm with brass stabs only"
+        ],
+        "answerIndex": 1,
+        "correctFeedback": "Correct. Amapiano often feels spacious and hypnotic, built on soft keys, rolling percussion, and deep bass motion.",
+        "incorrectFeedback": "Not quite. Amapiano is usually recognized by its slower, atmospheric house groove with airy piano and bass movement.",
+        "insight": "Its dance energy is often subtle and immersive rather than aggressive or rushed."
+      },
+      {
         "id": "listen-afrobeat-kese",
         "prompt": "Listen to the clip and choose the genre that fits it best.",
         "context": "Use what you learned about tempo feel and instrumentation instead of focusing on the artist name.",
@@ -232,6 +203,21 @@
         "insight": "This listening clip is \"Kese\" by Wizkid. The cue is the grounded pulse and percussive movement rather than a deep rolling log-drum bounce."
       },
       {
+        "id": "influence",
+        "prompt": "Which artist or scene would more likely be discussed when tracing the rise of Afrobeat?",
+        "context": "Choose the answer most connected to the genre's historical identity.",
+        "options": [
+          "Fela Kuti and Lagos live-band culture",
+          "Pretoria township house collectives only",
+          "Nashville country radio",
+          "Paris opera ensembles"
+        ],
+        "answerIndex": 0,
+        "correctFeedback": "Correct. Fela Kuti is central to Afrobeat's history and its Lagos live-band movement.",
+        "incorrectFeedback": "Not quite. Afrobeat history is strongly linked to Fela Kuti and the Lagos performance scene.",
+        "insight": "Amapiano has its own important scenes and artists, but Afrobeat's foundation is typically introduced through Fela Kuti's influence."
+      },
+      {
         "id": "listen-amapiano-tshwala",
         "prompt": "Listen to the clip and choose the genre that fits it best.",
         "context": "Ask yourself whether the beat feels club-hypnotic and bass-led or more like a live-band groove.",
@@ -254,6 +240,21 @@
         "correctFeedback": "Correct. The clip fits Amapiano with its repetitive dance pulse and deeper bass-led momentum.",
         "incorrectFeedback": "Not quite. This one lands in Amapiano because of its hypnotic bounce and club-oriented low-end.",
         "insight": "This listening clip is \"Tshwala Bam\". The strongest clue is the rolling, bass-centered groove rather than live-band percussion."
+      },
+      {
+        "id": "application",
+        "prompt": "If a listener says, \"This track feels like a laid-back groove built for smooth dancing and repeated piano motifs,\" which genre are they probably describing?",
+        "context": "Apply the genre traits instead of recalling a fact word-for-word.",
+        "options": [
+          "Afrobeat",
+          "Amapiano",
+          "Both equally, with no distinction",
+          "Neither genre uses piano motifs"
+        ],
+        "answerIndex": 1,
+        "correctFeedback": "Correct. The laid-back dance groove and repeated piano phrasing are classic clues for Amapiano.",
+        "incorrectFeedback": "Not quite. That smooth, piano-driven dance feel is usually associated with Amapiano.",
+        "insight": "Afrobeat can be danceable too, but its identity is less centered on those floating piano motifs."
       },
       {
         "id": "listen-afrobeat-holy-ghost",
