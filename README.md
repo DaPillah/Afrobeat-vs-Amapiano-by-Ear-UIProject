@@ -6,7 +6,7 @@ Small multi-page prototype for comparing Afrobeat and Amapiano through a homepag
 
 - Justin Oketunmbi — DaPillah
 - Lionel Ebebe — Paname237
-- Eldad Tolla — Eldad Tolla
+- Eldad Tolla — etollaw
 
 ## Run locally
 
